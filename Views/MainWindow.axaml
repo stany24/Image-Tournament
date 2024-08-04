@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ImageTournament.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ImageTournament.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ImageTournament">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid
+        ColumnDefinitions="*,10,*"
+        RowDefinitions="Auto,10,*,10,Auto">
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            ColumnDefinitions="*,10,Auto">
+            <TextBox
+                Grid.Column="0"
+                Text="{Binding Path}">
+            </TextBox>
+            <Button
+                Grid.Column="2"
+                Content="Start"
+                Command="{Binding Start}">
+            </Button>
+        </Grid>
+        <Image
+            Grid.Row="2"
+            Grid.Column="0"
+            Source="{Binding LeftImage}"></Image>
+        <Image
+            Grid.Row="2"
+            Grid.Column="2"
+            Source="{Binding RightImage}"></Image>
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            IsEnabled="{Binding Enabled}"
+            Command="{Binding ImageSelected}"
+            CommandParameter="true">Select Left</Button>
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            IsEnabled="{Binding Enabled}"
+            Command="{Binding ImageSelected}"
+            CommandParameter="false">Select Right</Button>
+    </Grid>
+
+</Window>
