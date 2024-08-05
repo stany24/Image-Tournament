@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:ImageTournament.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ImageTournament.Views.ResultWindow"
+        x:DataType="viewModels:ResultWindowViewModel"
+        Title="ResultWindow">
+    <Grid
+        RowDefinitions="*,10,*,10,*">
+        <Image
+            Grid.Row="0"
+            Source="{Binding Winner}"></Image>
+        <Grid
+            Grid.Row="2"
+            ColumnDefinitions="*,Auto,*,Auto,*">
+            <Image
+                Grid.Column="1"
+                Source="{Binding Winner}"></Image>
+            <Image
+                Grid.Column="3"
+                Source="{Binding Second}"></Image>
+        </Grid>
+        <Grid
+            Grid.Row="4"
+            ColumnDefinitions="*,Auto,*,Auto,*,Auto,*,Auto,*">
+            <Image
+                Grid.Column="1"
+                Source="{Binding Winner}"></Image>
+            <Image
+                Grid.Column="3"
+                Source="{Binding Third}"></Image>
+            <Image
+                Grid.Column="5"
+                Source="{Binding Fourth}"></Image>
+            <Image
+                Grid.Column="7"
+                Source="{Binding Second}"></Image>
+        </Grid>
+    </Grid>
+</Window>

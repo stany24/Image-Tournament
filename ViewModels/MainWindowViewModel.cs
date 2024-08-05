@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
+using ImageTournament.Logic;
 
 namespace ImageTournament.ViewModels;
 
