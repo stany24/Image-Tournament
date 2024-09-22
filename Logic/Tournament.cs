@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using ImageTournament.ViewModels;
 using ImageTournament.Views;
 
@@ -8,16 +7,17 @@ namespace ImageTournament.Logic;
 
 public class Tournament
 {
-    private readonly TournamentResult _result = new();
     public EventHandler<NewImagesEventArgs>? ImagesChanged { get; set; }
     public EventHandler<NewImagesEventArgs>? Ended { get; set; }
     private string?[] _imageArray;
     private string?[] _nextArray;
     private int _currentRoundSize;
     private int _index;
+    private readonly string _tournamentPath;
     
     public Tournament(string path)
     {
+        _tournamentPath = path;
         string[] images = Directory.GetFiles(path);
         _currentRoundSize = GetSizeAboveMultipleOf2(images.Length);
 
@@ -59,6 +59,7 @@ public class Tournament
     {
         Console.WriteLine("Before: "+(_index/2+1)+"/"+_imageArray.Length/2);
         _nextArray[_index/2] =isLeft ? _imageArray[_index] : _imageArray[_index+1];
+        SaveLoser(!isLeft ? _imageArray[_index] : _imageArray[_index+1]); 
         _index += 2;
         if (_index >= _imageArray.Length )
         {
@@ -71,6 +72,24 @@ public class Tournament
             return;
         }
         ImagesChanged?.Invoke(null, new NewImagesEventArgs(_imageArray[_index], _imageArray[_index + 1]));
+    }
+    
+    private void SaveLoser(string? loser)
+    {
+        if(loser == null) return;
+        string roundPath = Path.Combine(_tournamentPath, Convert.ToString(_currentRoundSize));
+        if (!Directory.Exists(roundPath)) { Directory.CreateDirectory(roundPath); }
+        string loserPath = Path.Combine(roundPath, Path.GetFileName(loser));
+        File.Move(loser, loserPath);
+    }
+    
+    private void SaveWinner(string? winner)
+    {
+        if(winner == null) return;
+        string roundPath = Path.Combine(_tournamentPath, Convert.ToString(1));
+        Directory.CreateDirectory(roundPath);
+        string loserPath = Path.Combine(roundPath, Path.GetFileName(winner));
+        File.Move(winner, loserPath);
     }
     
     private void NextRound()
@@ -87,26 +106,15 @@ public class Tournament
         
         if (_imageArray.Length == 1)
         {
-            Console.WriteLine("Winner: "+_imageArray[0]);
-            _result.SetWinner(_imageArray[0]);
+            SaveWinner(_imageArray[0]);
             ResultWindow resultWindow = new()
             {
-                DataContext = new ResultWindowViewModel(_result)
+                DataContext = new ResultWindowViewModel(_tournamentPath)
             };
             resultWindow.Show();
             
             Ended?.Invoke(null,new NewImagesEventArgs(_imageArray[0],_imageArray[0]));
             return;
-        }
-        
-        if (_imageArray.Length == 2)
-        {
-            _result.SetFinal(_imageArray.ToList());
-        }
-        
-        if (_imageArray.Length == 4)
-        {
-            _result.SetDemi(_imageArray.ToList());
         }
         
         ImagesChanged?.Invoke(null, new NewImagesEventArgs(_imageArray[0], _imageArray[1]));

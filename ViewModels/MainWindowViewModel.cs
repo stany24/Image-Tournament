@@ -33,9 +33,7 @@ public partial class MainWindowViewModel : ObservableObject
         {
             Enabled = false;
             LeftImage?.Dispose();
-            LeftImage = GetBitmap(e.LeftImage);
             RightImage?.Dispose();
-            RightImage = GetBitmap(e.RightImage);
         };
         _tournament.Begin();
         Enabled = true;

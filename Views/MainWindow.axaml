@@ -44,12 +44,16 @@
         <Button
             Grid.Row="4"
             Grid.Column="0"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
             IsEnabled="{Binding Enabled}"
             Command="{Binding ImageSelected}"
             CommandParameter="true">Select Left</Button>
         <Button
             Grid.Row="4"
             Grid.Column="2"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
             IsEnabled="{Binding Enabled}"
             Command="{Binding ImageSelected}"
             CommandParameter="false">Select Right</Button>

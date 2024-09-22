@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0bXpz4G3oyKVLv5CailRGNUI/vbCeZczIb/nFgxGRvNDx8vph7NBOPzBP86FI91IP7CKXQ6s9e/rKDOFfEiWfA==",
+  "dgSpecHash": "wN5HKfj8ITU=",
   "success": true,
   "projectFilePath": "/media/Pgm3/Git/Image-Tournament/ImageTournament.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,10 @@
     "/home/stan/.nuget/packages/skiasharp.nativeassets.win32/2.88.8/skiasharp.nativeassets.win32.2.88.8.nupkg.sha512",
     "/home/stan/.nuget/packages/system.io.pipelines/6.0.0/system.io.pipelines.6.0.0.nupkg.sha512",
     "/home/stan/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
-    "/home/stan/.nuget/packages/tmds.dbus.protocol/0.16.0/tmds.dbus.protocol.0.16.0.nupkg.sha512"
+    "/home/stan/.nuget/packages/tmds.dbus.protocol/0.16.0/tmds.dbus.protocol.0.16.0.nupkg.sha512",
+    "/home/stan/.nuget/packages/microsoft.netcore.app.ref/8.0.7/microsoft.netcore.app.ref.8.0.7.nupkg.sha512",
+    "/home/stan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.7/microsoft.aspnetcore.app.ref.8.0.7.nupkg.sha512",
+    "/home/stan/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.7/microsoft.netcore.app.host.linux-x64.8.0.7.nupkg.sha512"
   ],
   "logs": []
 }
