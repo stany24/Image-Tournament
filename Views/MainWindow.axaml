@@ -48,6 +48,7 @@
             HorizontalContentAlignment="Center"
             IsEnabled="{Binding Enabled}"
             Command="{Binding ImageSelected}"
+            HotKey="Left"
             CommandParameter="true">Select Left</Button>
         <Button
             Grid.Row="4"
@@ -56,6 +57,7 @@
             HorizontalContentAlignment="Center"
             IsEnabled="{Binding Enabled}"
             Command="{Binding ImageSelected}"
+            HotKey="Right"
             CommandParameter="false">Select Right</Button>
     </Grid>
 

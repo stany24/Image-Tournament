@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using ImageTournament.ViewModels;
 using ImageTournament.Views;
 
@@ -19,6 +20,7 @@ public class Tournament
     {
         _tournamentPath = path;
         string[] images = Directory.GetFiles(path);
+        images = images.Where(file => file.EndsWith(".jpg") || file.EndsWith(".png") || file.EndsWith(".webp")).ToArray();
         _currentRoundSize = GetSizeAboveMultipleOf2(images.Length);
 
         _imageArray = new string[_currentRoundSize];
